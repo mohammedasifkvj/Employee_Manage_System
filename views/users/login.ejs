@@ -1,0 +1,49 @@
+<%- include("../partials/_header.ejs") %>
+<div class="tank">
+<div class="container ">
+    <div class="row justify-content-center w-100 ">
+      <div class="col-4 shadow rounded-3 p-5">
+        <h2 class="pb-3 text-center">Login Form</h2>
+        <% if (error) { %>
+          <div class="text-center font-regular p-2 alert alert-danger"><%= error %></div>  
+        <% } %>
+        <% if (success) { %>
+          <div class="text-center font-regular alert p-2 alert-success"><%= success %></div>  
+        <% } %>
+        <form id="loginform" method="POST" action="/login" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+            <div class="invalid-feedback">Please enter a password.</div>
+          </div>
+          <div class="d-grid gap-2 text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="/signup" class=" btn-outline-primary">Create an account</a>
+          </div>
+          <hr>
+          <a class=" btn-primary -link w-100" href="/admin/login">Login as Admin</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../partials/_footer') %>

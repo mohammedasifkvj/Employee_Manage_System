@@ -1,0 +1,48 @@
+<%- include("../partials/_header.ejs") %>
+
+<div class="container">
+  <div class="py-5">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <h2 class="mb-2">Create new User</h2>
+        <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <form id="newUserForm" method="POST" action="/admin/user/newuser" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required/>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required/>
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile Number:</label>
+            <input type="number" class="form-control" id="mobile" name="phone" type="number" required/>
+            <!-- <input class="form-control" id="mobile" name="phone" type="number" required/> -->
+            <div class="invalid-feedback">
+              Please enter a valid mobile number.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="mobile" name="password" required/>
+            <div class="invalid-feedback">
+              Please enter a valid mobile number.
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a href="/admin/dashboard" class="btn btn-outline-secondary">Back to Dashboard</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include("../partials/_footer.ejs") %>

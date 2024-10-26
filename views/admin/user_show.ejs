@@ -1,0 +1,40 @@
+<%- include("../partials/_header") %>
+<div class="container">
+    <div class="py-5">
+      <div class="d-flex justify-content-between mb-3">
+        <h1><%= user.name %></h1>
+        <div>
+          <a href="/admin/dashboard" class="btn btn-primary">Back to dashboard</a>
+        </div>
+      </div>
+  
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="row"><%= user.uid %></th>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone %></td>
+            <td>
+              <a href="/admin/user/<%= user.uid %>/edit" class="btn btn-sm btn-info">Edit</a>
+              <form
+                action="/admin/users/<%= user.uid %>/destroy"method="POST"  class="d-inline-block" >
+                <button  type="submit" class="btn btn-sm btn-danger" >Delete</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <%- include("../partials/_footer") %>

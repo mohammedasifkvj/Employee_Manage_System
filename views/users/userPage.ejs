@@ -1,0 +1,16 @@
+<%- include('../partials/_header') %>
+<div class="tank text-center">
+    <div class="container w-30 border py-5 mt-5" >
+        <h2>Hello,Welcome  <%= user[0].name %> to Home</h2>
+        <br>
+        <!-- <h5>Name  : <%=user[0].name%></h5> -->
+        <h5>Email : <%=user[0].email%></h5>
+        <h5>phone : <%=user[0].phone%></h5>
+        <hr>
+        <form class="text-center" action="/logout" method="post">
+            <button class="btn btn-primary">Logout</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/_footer') %>

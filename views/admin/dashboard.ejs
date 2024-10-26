@@ -1,0 +1,57 @@
+<%- include("../partials/_header.ejs") %>
+
+<div class="container">
+  <div class="py-5">
+    <div class="d-flex justify-content-between mb-3">
+      <h1>Admin Panel</h1>
+
+      <div class="d-flex">
+        <div class="me-2">
+          <a href="/admin/user/newuser" class="btn btn-success">Create new User</a>
+        </div>
+        <form action="/logout" method="post">
+          <button class="btn btn-warning">Logout</button>
+        </form>
+      </div>
+    </div>
+
+    <form action="/admin/dashboard/search" class="d-flex w-25 mb-3">
+      <input type="search" class="form-control" name="q" value="<%= q??q %>" placeholder="Search" />
+      <button type="submit" class="btn btn-primary ms-3">Search</button>
+    </form>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <% if (users.length > 0) { %>
+          <% users.forEach(function (user) { %>
+          <tr>
+            <td><%= user.uid %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone %></td>
+            <td>
+              <a href="/admin/user?id=<%= user.uid %>/usershow" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></a>
+              <a href="/admin/user/<%= user.uid %>/edit" class="btn btn-sm btn-info text-white"><i class="bi bi-pencil-square"></i></a>
+              <form action="/admin/users/<%= user.uid %>/destroy" method="POST" class="d-inline-block">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></a>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        <% } else { %>
+          <h1 class="py-3">No Users found!</h1>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include("../partials/_footer.ejs") %>
